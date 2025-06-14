@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Avatar from "@/components/ui/Avatar";
+import SignIn from "@/components/ui/SignIn";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isAuthenticated] = useState(false);
   return (
     <nav className="navbar justify-between bg-base-100 shadow-sm px-10">
       <div className="navbar-start">
@@ -16,17 +21,21 @@ const Navbar = () => {
           </li>
           <li>
             <Link href="/ragac">asdas</Link>
-          </li>{" "}
+          </li>
           <li>
             <Link href="/ragac">asdas</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <Avatar
-          alt="Avatar"
-          src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-        />
+        {isAuthenticated ? (
+          <Avatar
+            alt="Avatar"
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+          />
+        ) : (
+          <SignIn />
+        )}
       </div>
     </nav>
   );
